@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'css/home.css'%}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;1,400&display=swap"
+    rel="stylesheet" />
+
+  <title>Home</title>
+  <style>
+    .hero-section {
+      background-image: url({% static '/img/home3.jpg'%});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      height: 60vh;
+    }
+    .next-btn{
+        outline:0;
+        border:0;
+        }
+    .app_msg{
+    text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav-bar">
+    <div class="logo-section">
+      <img src="{% static '/img/medicine.png'%}" class="icon-img" />
+
+    </div>
+    <p class="title">Hospital Appointment System</p>
+
+
+    <div class="nav-list">
+      <ul class="nav-list-items">
+        <li class="list-item active-page">
+          <a href="./home.html">Home</a>
+        </li>
+
+        <li class="list-item"><a href="#history">History</a></li>
+
+      </ul>
+      <div class="profile-img-section">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+
+        <a><img src="/media/{{items.PatientImg}}" width="66" height="66" alt="profile-img"
+            class="profile-img open" /></a>
+      </div>
+      <a href="{% url 'logoutp'%}" class="list-item logout-btn-1">Logout</a>
+    </div>
+  </div>
+  <div class="hero-section"></div>
+  <div class="profile-section-1">
+    <div class="close"><img src="{%static '/img/close-2.png'%}" class="close-img"></div>
+    <div class="col--1">
+      <img src="/media/{{items.PatientImg}}" class="pimg">
+    </div>
+    <div class="col--2">
+      <ul class="feature-list">
+        <li class="feature-list-items">{{items.PatientName}}</li>
+        <li class="feature-list-items">{{items.PatientMail}}</li>
+        <li class="feature-list-items"><a href='/edit/{{items.PatientID}}' class="edit-feature">Edit</a></li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="make-appoint-section">
+    <p class="hero-text">
+      Our user-friendly online booking system makes it easy to choose a
+      convenient time that fits your schedule.<br />
+      <span class="hero-text--1">Your Health, Your Priority. Schedule Your Appointment Now.</span>
+    </p>
+    <form method="get" action="{% url 'search_view' %}">
+        <button type="submit"  class="appoint-btn next-btn">Make Appointment</button>
+    </form>
+  </div>
+  <div class="appointed-section">
+    <h3 class="edit-header">Your Appointment</h3>
+    {%if not a_data %}
+        <p class="app_msg">No Data Here</p>
+
+
+        {%else%}
+     <div class="card-sections">
+
+       <div class="card">
+        {% for p in a_data%}
+        <div class="card-container">
+
+          <div class="card-info">
+            <p class="token-area">
+              <span class="p-no">{{p.Token}}</span>
+            </p>
+            <p class="d-name">{{p.Doctor}}</p>
+            <p class="p-date">{{p.AppointDate}}</p>
+            <p class="p-text">{{p.AppointStartTime}} to {{p.AppointEndTime}}</p>
+          </div>
+
+          <div class="card-action">
+
+<!--            <a href="/list/{{p.AppointmentID}}"><img src="{%static '/img/delete-button.png'%}" class="cancel-btn1"></a>-->
+             <form action="{% url 'list' id=p.AppointmentID %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-outline-edit btn--1"><img src="{%static '/img/delete-button.png'%}" class="cancel-btn1"></button>
+                        </form>
+          </div>
+
+        </div>
+         {%endfor%}
+        {%endif%}
+      </div>
+
+    </div>
+  </div>
+  <div class="aboutus-section">
+    <div class="hospital-section">
+      <h3 class="edit-header">About Us</h3>
+      <p class="about-list">
+        <span class="paragraph">By developing a user-friendly and efficient digital platform, the project aims to
+          provide patients with a
+          seamless
+          experience in booking, rescheduling, and canceling appointments, reducing wait times and improving overall
+          patient
+          satisfaction.</span>
+        <img src="{%static '/img/home.jpg'%}" class="about-img">
+      </p>
+    </div>
+
+  </div>
+  <div class="history-section" id="history">
+    <h3 class="edit-header">Your History</h3>
+    {% if not h_data %}
+        <p class="app_msg">No Data Here</p>
+    {%else%}
+    <table class="table history-table">
+      <thead>
+        <tr>
+          <th scope="col">DoctorName</th>
+          <th scope="col">AppointDate</th>
+          <th scope="col">AppointStartTime</th>
+          <th scope="col">AppointEndTime</th>
+          <th scope="col">Token</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+       {%for h in h_data%}
+        <tr>
+          <td>{{h.Doctor}}</td>
+          <td>{{h.AppointDate}}</td>
+          <td>{{h.AppointStartTime}}</td>
+          <td>{{h.AppointEndTime}}</td>
+          <td>{{h.Token}}</td>
+          <td>{{h.Status}}</td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+    {%endif%}
+  </div>
+
+  <footer class="footer-section">
+    <div class="addr-section addr-footer">
+
+      <div class="addr footer-color footer-addr">
+        <address>201 E. FRONT STREET MISSOULA, MT 59802</address>
+      </div>
+
+      <div class="phnumber footer-color">Contact Us: 09456829202</div>
+      <hr class="line" />
+
+      <div class="copyrigt-section">
+        <p class="copyright footer-color">©2024 Hospital Appointment</p>
+      </div>
+    </div>
+    <p class="copyright-photo footer-color">
+      PHOTOGRAPHY BY:<span class="photo-name"> Unsplash</span>
+    </p>
+  </footer>
+  <script src="{%static 'js/script.js'%}"></script>
+</body>
+
+</html>

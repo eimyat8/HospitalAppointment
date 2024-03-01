@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+  <link rel="stylesheet" href="{% static '/css/home.css'%}" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;1,400&display=swap"
+    rel="stylesheet" />
+  <style>
+     .hero-section {
+      background-image: url({% static '/img/home3.jpg'%});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      height: 60vh;
+    }
+  </style>
+  <title>Home</title>
+</head>
+
+<body>
+  <div class="nav-bar">
+    <div>
+      <img src="{%static '/img/medicine.png'%}" class="icon-img" />
+    </div>
+    <p class="title">Hospital Appointment System</p>
+    <div class="nav-list">
+      <ul class="nav-list-items">
+        <li class="list-item">
+          <a href="/login/">Log in</a>
+        </li>
+        <li class="list-item"><a href="/psignup/">Register</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="hero-section"></div>
+  <div class="aboutus-section">
+    <div class="hospital-section">
+      <h3>About Us</h3>
+      <p class="about-list">
+        <span class="paragraph">By developing a user-friendly and efficient digital platform, the project aims to
+          provide patients with a
+          seamless
+          experience in booking, rescheduling, and canceling appointments, reducing wait times and improving overall
+          patient
+          satisfaction.</span>
+        <img src="{%static '/img/home.jpg'%}" class="about-img">
+      </p>
+    </div>
+    <div class="team-section">
+      <h3>Team Members</h3>
+      <div class="team-profile">
+        <div class="members">
+          <img src="{%static '/img/emtzk.jpg'%}" alt="member-picture" class="mem-pic" />
+          <p class="member-role">Ei Myat Thinzar Kyaw</p>
+          <p class="member-role">Front-end & Back-end</p>
+        </div>
+        <div class="members">
+          <img src="{%static '/img/kzkk.jpg'%}" alt="member-picture" class="mem-pic" />
+          <p class="member-role">Khine Zin Ko Ko</p>
+          <p class="member-role">Back-end</p>
+        </div>
+        <div class="members">
+          <img src="{%static '/img/tzs1.jpeg'%}" alt="member-picture" class="mem-pic" />
+          <p class="member-role">Thazin Shane</p>
+          <p class="member-role">Back-end</p>
+        </div>
+        <div class="members">
+          <img src="{%static '/img/ems.jpg'%}" alt="member-picture" class="mem-pic" />
+          <p class="member-role">Ei Moe San</p>
+          <p class="member-role">Back-end</p>
+        </div>
+        <div class="members">
+          <img src="{%static '/img/wmt1.jpg'%}" alt="member-picture" class="mem-pic" />
+          <p class="member-role">Win Min Tun</p>
+          <p class="member-role">Back-end</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer-section">
+    <div class="addr-section addr-footer">
+
+      <div class="addr footer-color footer-addr">
+        <address>201 E. FRONT STREET MISSOULA, MT 59802</address>
+      </div>
+
+      <div class="phnumber footer-color">Contact Us: 09456829202</div>
+      <hr class="line" />
+
+      <div class="copyrigt-section">
+        <p class="copyright footer-color">©2024 Hospital Appointment</p>
+      </div>
+    </div>
+    <p class="copyright-photo footer-color">
+      PHOTOGRAPHY BY:<span class="photo-name"> Unsplash</span>
+    </p>
+  </footer>
+
+</body>
+
+</html>

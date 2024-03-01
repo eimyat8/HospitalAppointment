@@ -1,0 +1,148 @@
+/*
+    text color - #FAFAFA
+    primary color - #574b90
+    accent color - #9488cc
+ */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fafafa;
+  font-family: "Work Sans", sans-serif;
+}
+.header {
+  text-align: center;
+  margin: 2.4rem;
+}
+.mail {
+  font-size: 1.6rem;
+}
+.display-section {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.h2 {
+  font-weight: 700;
+  font-size: 2rem;
+}
+.h5 {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.cta-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.primary-btn {
+  padding: 0.5rem 7rem;
+  border: 0;
+  box-shadow: 0.03rem 0.1rem 0.2rem #1c4345;
+  background-color: #574b90;
+  color: #fafafa;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  &:hover {
+    background-color: #9488cc;
+    transition: all 0.3s;
+  }
+}
+.secondary-btn {
+  border: 0;
+  background-color: transparent;
+  outline: 0.1rem solid #574b90;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.2rem;
+  color: #574b90;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.8rem;
+  &:hover {
+    background-color: #574b90;
+    color: #fafafa;
+    transition: all 0.3s;
+  }
+  &:active {
+    background-color: #9488cc;
+    color: #fafafa;
+    transition: all 0.3s;
+  }
+}
+.signup-txt,
+.login-txt {
+  font-size: 0.8rem;
+}
+.cta-content {
+  background-color: #a5a5a59f;
+  width: 100%;
+  height: 100vh;
+}
+.arrow-img {
+  width: 3rem;
+  transform: scale(-1);
+  margin: 4rem;
+}
+.cta-section-1 {
+  margin: 3rem;
+}
+.input-section-1 {
+  display: grid;
+  grid-template-columns: repeat(2, 0.1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.7rem;
+  /* margin-left: 2rem;
+  margin-bottom: 1rem; */
+}
+.txtbox {
+  margin-top: -0.5rem;
+}
+label {
+  width: 5rem;
+}
+.input-section-2 {
+  margin-left: 7rem;
+}
+input[type="file"] {
+  margin-left: 1.2rem;
+}
+.otherlable {
+  margin-left: 1.2rem;
+}
+.fields-select-1 {
+  width: 11rem;
+  margin-left: 0.5rem;
+}
+.btn-section-1 {
+  margin: 3rem 0 0 8rem;
+}
+table,
+td,
+th {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  margin-top: 1rem;
+  width:100%;
+}
+.doctor-section {
+  /*width: 80%;*/
+}
+th,
+td {
+  padding: 0.4rem;
+}
+.content {
+  display: flex;
+  gap: 1rem;
+}

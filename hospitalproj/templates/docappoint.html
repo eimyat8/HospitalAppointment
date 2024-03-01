@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Dashboard</title>
+  <link rel="stylesheet" href="{% static '/css/admin.css'%}" />
+  <link rel="stylesheet" href="{% static '/css/general.css'%}" />
+  <link rel="stylesheet" href="{% static '/css/doctor.css'%}" />
+    <style>
+        .noresult-txt{
+ text-align:center;
+ margin:1rem;
+}
+        .doc-vt {
+  background-color: rgb(224, 224, 224);
+  height: 100vh;
+  width:20rem;
+}
+    </style>
+</head>
+
+<body>
+  <div class="doc-vt vertical-bar">
+    <div class="doc-profile-section">
+      <div class="profile-img-section">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+
+        <a href="{%url 'dprofile' %}"><img src="/media/{{items.DoctorImg}}" width="70" height="70" alt="profile-img"
+            class="profile-img" /></a>
+      </div>
+      <div class="profile-text">
+        <p class="profile-name">{{items.DoctorName}}</p>
+        <p class="profile-email">{{items.DoctorMail}}</p>
+      </div>
+    </div>
+      <div class="doc-logout-section">
+    <a href="{% url 'logout' %}" class="btn logout-btn">Log out</a>
+</div>
+
+    <div class="nav-list-section">
+      <ul class="nav-list-items">
+        <li class="list-items active">
+          <a href="{% url 'doctor'%}" >Create Schedule</a>
+        </li>
+        <li class="list-items">
+          <a href="{%url 'doctorsche'%}" >Schedule</a>
+        </li>
+        <li class="list-items">
+          <a href="{%url 'docappoint'%}" class="active-page">Appointment</a>
+        </li>
+        <li class="list-items">
+          <a href="{%url 'dochistory'%}">History</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="right-container">
+    <div class="display-section">
+      <p class="h2">Welcome back,</p>
+      <p class="h5">{% now "Y-m-d"%}</p>
+      <p class="h5" id="time">00:00:00 PM Sunday</p>
+    </div>
+      <form method="post" class="date-form">
+            {%csrf_token%}
+            {{form.as_p}}
+        <button class ="btn-outline-primary btn-search" type="submit">Search</button>
+    </form>
+
+
+{% if appointment %}
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Patient</th>
+                <th>AppointDate</th>
+                <th>AppointStartTime</th>
+                <th>AppointEndTime</th>
+                <th>Token</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appoint in appointment %}
+                <tr>
+
+                    <td>{{ appoint.Patient }}</td>
+                    <td>{{ appoint.AppointDate }}</td>
+                    <td>{{ appoint.AppointStartTime }}</td>
+                    <td>{{ appoint.AppointEndTime }}</td>
+                    <td>{{ appoint.Token }}</td>
+                    <td>{{ appoint.Status }}</td>
+                    <td>
+                        <form action="{% url 'complete_appointment' id=appoint.AppointmentID %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-outline-edit btn--1">Completed</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p class="noresult-txt">No appointments</p>
+{% endif %}
+  </div>
+<script src="{%static 'js/time.js'%}"></script>
+</body>
+
+</html>

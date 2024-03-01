@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="{% static './css/signup.css'%}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;1,400&display=swap"
+    rel="stylesheet" />
+
+    <title>Doctor Signup</title>
+    <style>
+        body {
+            background-image: url({% static '/img/home3.jpg'%});
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        li{
+        list-style-type:none;
+        color:red;
+        font-size:0.7rem;
+        position:absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="cta-content">
+        <div class="signup-section">
+
+            <form method="POST" class="signup-form">
+                <h3 class="header">Sign Up</h3>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="signup-btn">Sign Up</button>
+            </form>
+            <div class="login-section">
+                <p class="login-txt">Already hava an account?</p>
+                <a href="/dlogin/" class="login-btn">Login</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

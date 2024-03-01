@@ -1,0 +1,172 @@
+.doc-vt {
+  background-color: rgb(224, 224, 224);
+  height: 110vh;
+}
+.doc-profile-section {
+  display: flex;
+  position: relative;
+  top: -2rem;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.doc-logout-section {
+  position: relative;
+  top: -2.6rem;
+}
+.sche-form-section{
+width:20rem;
+margin-left:5rem;
+}
+.cta{
+display:flex;
+flex-direction:column;
+margin-bottom: 1.8rem;
+}
+.date-form{
+display:flex;
+gap:1rem;
+}
+input[type='date'],
+input[type='time'],
+input[type='number'], select {
+  width: 14rem;
+  border: 0;
+  border-bottom: 1px;
+  border-color: #574b90;
+  border-style: solid;
+  background-color: transparent;
+  outline: 0;
+  font-size: 1rem;
+  &:focus {
+    outline: 0;
+  }
+}
+
+.btn-outline-success {
+  border: 0;
+  padding: 0.8rem 0.6rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  &:hover {
+    background-color: #bfb5ee;
+    transition: all 0.5s;
+  }
+}
+.btn-submit{
+margin-left:2rem;
+width:10rem;
+}
+.btn-outline-edit {
+  padding: 0.54rem 0.6rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 1px solid #574b90;
+  background-color: transparent;
+  text-decoration: none;
+  color: #000;
+  &:hover {
+    color: #fafafa;
+    background-color: #574b90;
+    transition: all 0.5s;
+  }
+}
+.btn-outline-danger {
+  padding: 0.54rem 0.6rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 1px solid rgb(226, 135, 135);
+  background-color: transparent;
+  text-decoration: none;
+  color: #000;
+  &:hover {
+    color: #fafafa;
+    background-color: rgb(226, 135, 135);
+    transition: all 0.5s;
+  }
+}
+.btn-add {
+  margin-top: 1rem;
+}
+/*.cta-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}*/
+
+.cta {
+  margin-bottom: 1.8rem;
+}
+.btn-outline-primary1 {
+  border: 0;
+  background-color: #574b90;
+  color: #fafafa;
+  padding: 0.2rem 0.8rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  &:hover {
+    background-color: #9f93db;
+    transition: all 0.5s;
+  }
+}
+.btn-search {
+    margin-top:0.8rem;
+  margin-left: 1rem;
+}
+.profile-img-section {
+  height: 6rem;
+  &:hover {
+    cursor: pointer;
+    .circle1 {
+      transform: rotate(360deg);
+    }
+    .circle2 {
+      transform: rotate(-360deg);
+    }
+  }
+}
+.circle1 {
+  width: 5.6rem;
+  height: 5.6rem;
+  border-style: solid;
+  border-color: #786450 #786450 #786450 transparent;
+  border-width: 1px;
+  position: relative;
+  top: 0.78rem;
+  left: 0.16rem;
+  border-radius: 50%;
+  transition: all 1.5s ease-in-out;
+}
+.circle2 {
+  margin: 0.1rem auto;
+  width: 4.8rem;
+  height: 4.8rem;
+  border-style: solid;
+  border-color: #786450 transparent #786450 #786450;
+  border-width: 1px;
+  position: relative;
+  top: -4.5rem;
+  right: -0.2rem;
+  border-radius: 50%;
+  transition: all 1.5s ease-in-out;
+}
+.profile-img {
+  border-radius: 50%;
+  position: relative;
+  top: -9.2rem;
+  right: -0.7rem;
+}
+.profile-img-1 {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+table {
+  text-align: center;
+  width:100%;
+}
+td {
+  margin-top: 5rem;
+  padding:1rem;
+}
+

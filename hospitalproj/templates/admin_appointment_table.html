@@ -1,0 +1,31 @@
+{% extends 'admindashb.html' %}
+{% block content %}
+    <div class = "container">
+    <h4 class="h4">Appointment Result</h4>
+    <table class = "table appoint-table">
+    <tr>
+
+        <th>Doctor Name</th>
+        <th>Patient Name</th>
+        <th>Appointment Date</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Token No</th>
+
+    </tr>
+    {% for appointment in appointment_table %}
+    <tr>
+
+        <td>{{ appointment.Doctor }}</td>
+        <td>{{ appointment.Patient }}</td>
+        <td>{{ appointment.AppointDate }}</td>
+        <td>{{ appointment.AppointStartTime }}</td>
+        <td>{{ appointment.AppointEndTime }}</td>
+        <td>{{ appointment.Token }}</td>
+
+    </tr>
+    {% endfor %}
+    </table> <br/>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Dashboard</title>
+  <link rel="stylesheet" href="{%static 'css/admin.css'%}">
+  <link rel="stylesheet" href="{% static 'css/general.css'%}">
+
+
+  <style>
+    .profile-text {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard{
+    display:flex;
+
+}
+      .card-btn{
+      margin-left:1.6rem;
+      }
+
+  </style>
+</head>
+
+<body>
+ <div class="content">
+    <div class="vertical-bar">
+    <div class="profile-section">
+      <div class="profile-img-section">
+        <p class="profile-img">
+          <img src="/media/{{items.AdminImg}}" class="admin-img" />
+        </p>
+      </div>
+      <div class="profile-text">
+        <p class="profile-name">{{items.AdminName}}</p>
+        <p class="profile-email">{{items.AdminMail}}</p>
+      </div>
+    </div>
+    <div class="logout-section">
+      <a href="{% url 'logout' %}" class="btn logout-btn">Log out</a>
+    </div>
+    <div class="nav-list-section">
+      <ul class="nav-list-items">
+        <li class="list-items active">
+          <a href="{% url 'adminDashboard' %}" class="active-page">Dashboard</a>
+        </li>
+        <li class="list-items"><a href="{% url 'admindoc' %}" >Doctors</a></li>
+        <li class="list-items">
+          <a href="{% url 'adminsche' %}">Schedule</a>
+        </li>
+        <li class="list-items">
+          <a href="{% url 'adminappoint' %}">Appointment</a>
+        </li>
+        <li class="list-items"><a href="{% url 'adminpatient'%}">Patients</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="right-container">
+    <div class="display-section">
+      <p class="h2">Welcome back,</p>
+      <p class="h5">{% now "Y-m-d"%}</p>
+      <p class="h5" id="time">00:00:00 PM Sunday</p>
+    </div>
+    <div class="secondary-header">
+      <p class="h3">Status</p>
+    </div>
+    <div class="dashboard-section">
+      <div class="dashboard">
+          <button class="card-btn status-details" onclick="location.href='{% url 'retreive_admin_patient_appointments' %}'">
+          <img src="{% static '/img/hospitalisation.png'%}" class="icon-img">
+          <p class="patient-number">{{count.0}}<span> Patients</span>  </p>
+      </button>
+        <button class="card-btn status-details" onclick="location.href='{% url 'retreive_admin_doctor_schedules' %}'">
+          <img src="{% static '/img/doctor.png'%}" class="icon-img">
+          <p class="patient-number">{{count.1}}<span> Doctors</span> </p>
+        </button>
+      </div>
+    </div>
+    <div>
+        {% block content %}
+
+    {% endblock content %}
+    </div>
+
+
+  </div>
+ </div>
+<script src="{%static 'js/time.js'%}"></script>
+</body>
+
+</html>

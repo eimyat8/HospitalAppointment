@@ -1,0 +1,84 @@
+/*
+    text color - #FAFAFA
+    primary color - #574b90
+    accent color - #9488cc
+ */
+body {
+  background-color: #dee1ec;
+  font-family: "Work Sans", sans-serif;
+  overflow-y: hidden;
+}
+.login-section {
+  /* margin-top: 10rem; */
+  width: 28rem;
+  height: 64vh;
+  background-color: #fafafa;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 0.5rem;
+  border: 0.01rem solid #574b90;
+  box-shadow: 0 0 0.2rem #574b90;
+  overflow: hidden;
+}
+
+.fpwd-link {
+  font-size: 0.8rem;
+}
+
+.forgot-section {
+  margin-top: -1.6rem;
+  margin-bottom: 1rem;
+}
+
+.fpwd-link:hover,
+.fpwd-link:visited,
+.fpwd-link:link {
+  text-decoration: none;
+  color: #574b90;
+}
+.login-header {
+  text-align: center;
+  margin: 2.4rem;
+}
+.signup-section {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.input-section {
+  display: grid;
+  grid-template-columns: repeat(2, 0.5fr);
+  margin-left: 5rem;
+  margin-bottom: 1rem;
+  width:20rem
+}
+.icon {
+  margin-left: 1rem;
+  /* margin-top: 1rem; */
+  color: #574b90;
+}
+input[type="email"],
+input[type="password"],
+input[type="text"],
+.fields-select {
+  border: 0;
+  border-bottom: 1px;
+  border-color: #574b90;
+  border-style: solid;
+  background-color: transparent;
+  outline: 0;
+  font-size: 0.89rem;
+  &:focus {
+    outline: 0;
+  }
+}
+input::placeholder {
+  font-family: "Work Sans", sans-serif;
+}
+.error{
+    color:red;
+    text-align:center;
+    margin-bottom:0.6rem;
+}

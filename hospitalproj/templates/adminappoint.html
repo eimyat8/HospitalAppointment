@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Dashboard</title>
+  <link rel="stylesheet" href="{% static '/css/admin.css'%}" />
+  <link rel="stylesheet" href="{% static '/css/general.css'%}" />
+  <style>
+    .profile-text {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+  </style>
+</head>
+
+<body>
+  <div class="vertical-bar">
+    <div class="profile-section">
+      <div class="profile-img-section">
+        <p class="profile-img">
+          <img src="/media/{{items.AdminImg}}" class="admin-img" />
+        </p>
+      </div>
+      <div class="profile-text">
+        <p class="profile-name">{{items.AdminName}}</p>
+        <p class="profile-email">{{items.AdminMail}}</p>
+      </div>
+    </div>
+    <div class="logout-section">
+       <a href="{% url 'logout' %}" class="btn logout-btn">Log out</a>
+    </div>
+    <div class="nav-list-section">
+      <ul class="nav-list-items">
+        <li class="list-items active">
+          <a href="{% url 'adminDashboard' %}" >Dashboard</a>
+        </li>
+        <li class="list-items"><a href="{% url 'admindoc' %}" >Doctors</a></li>
+        <li class="list-items">
+          <a href="{% url 'adminsche' %}">Schedule</a>
+        </li>
+        <li class="list-items">
+          <a href="{% url 'adminappoint' %}" class="active-page">Appointment</a>
+        </li>
+        <li class="list-items"><a href="{% url 'adminpatient'%}">Patients</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="right-container">
+     <div class="display-section">
+      <p class="h2">Welcome back,</p>
+     <p class="h5">{% now "Y-m-d"%}</p>
+      <p class="h5" id="time">00:00:00 PM Sunday</p>
+    </div>
+    <p class="h5">Appointments</p>
+
+    <div class="appoint-section">
+      <form method="get" action="{% url 'adminappoint' %}">
+      <div class="cta">
+        <label for="Doctor">Doctor: </label>
+        <input type="search" id="doctor_name" name="doctor_name" placeholder="Search by doctor name...">
+        <button class="btn-outline-primary" type="submit">Search</button>
+      </div>
+      <div class="cta">
+        <label for="Patient">Patients: </label>
+        <input type="search" id="patient_name" name="patient_name" placeholder="Search by Patient name..." >
+        <button class="btn-outline-primary" type="submit">Search</button>
+      </div>
+      <div class="cta">
+        <label for="date">From: </label>
+        <input type="date">
+        <label for="date">To:</label>
+        <input type="date">
+        <button class="btn-outline-primary" type="submit">Search</button>
+      </div>
+    </form>
+    </div>
+    <div class="container">
+
+      <table class = "table">
+    <tr>
+        <th>Doctor Name</th>
+        <th>Patient Name</th>
+        <th>Appointment Date</th>
+        <th>Appointment Start Time</th>
+        <th>Appointment End Time</th>
+        <th>Token</th>
+        <th>Status</th>
+    </tr>
+    {% for appointment in appointment_table %}
+    <tr>
+        <td>{{ appointment.Doctor }}</td>
+        <td>{{ appointment.Patient }}</td>
+        <td>{{ appointment.AppointDate }}</td>
+        <td>{{ appointment.AppointStartTime }}</td>
+        <td>{{ appointment.AppointEndTime }}</td>
+        <td>{{ appointment.Token }}</td>
+        <td>{{ appointment.Status }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+        <p class="result-msg">{{message}}</p>
+    </div>
+
+  </div>
+<script src="{%static 'js/time.js'%}"></script>
+</body>
+
+</html>

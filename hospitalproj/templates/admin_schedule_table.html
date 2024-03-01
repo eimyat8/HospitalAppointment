@@ -1,0 +1,24 @@
+{% extends 'admindashb.html' %}
+{% block content %}
+    <div class = "container">
+    <h4 class="h4">Schedule result</h4>
+    <table class = "table">
+    <tr>
+        <th>Doctor Name</th>
+        <th>Schedule Date</th>
+        <th>Schedule Start Time</th>
+        <th>Schedule End Time</th>
+
+    </tr>
+    {% for res in result %}
+    <tr>
+        <td>{{ res.Doctor }}</td>
+        <td>{{ res.ScheduleDate }}</td>
+        <td>{{ res.ScheduleStartTime }}</td>
+        <td>{{ res.ScheduleEndTime }}</td>
+
+    </tr>
+    {% endfor %}
+    </table> <br/>
+</div>
+{% endblock content %}

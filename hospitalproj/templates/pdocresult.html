@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static '/css/home.css'%}" />
+
+
+    <title>Apppintment | Stage 2</title>
+    <style>
+        .dimg{
+            width:5rem;
+            border-radius:50%;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="appoint-section">
+        <p class="header">
+            Make Appointment
+        </p>
+        <p class="action-section">
+        <ul class="action-list">
+            <li class="actions"><a class="action ">1</a></li>
+            <li class="actions"><a class="action active-action">2</a></li>
+            <li class="actions"><a class="action">3</a></li>
+            <li class="actions"><a class="action">4</a></li>
+        </ul>
+        </p>
+        <form method="post" class="search-form">
+            {% csrf_token %}
+            <p class="name-search">
+                <input type="text" class="search-name" name="docname" placeholder="Search Doctor Name">
+                <button type="submit" value="submit" class="search-btn">Search</button>
+            </p>
+
+        </form>
+        <div class="doctor-section">
+            {% block content %}
+
+            {% endblock content %}
+            {% if doctors %}
+    <div class="container">
+
+            <table>
+                <tr>
+                    <th>Doctor Profile</th>
+                    <th>Doctor Name</th>
+                    <th>Doctor Specialization</th>
+                    <th></th>
+                </tr>
+                {% for x in doctors %}
+                    <tr>
+                        <td><img src="{{ x.DoctorImg.url }}" alt="{{x.DoctorName}}" class="dimg"></td>
+                        <td>{{x.DoctorName}}</td>
+                        <td>{{x.Department}}</td>
+                        <td><button type="submit" class="search-btn" onclick="location.href='{% url 'appointment_view' DoctorID=x.DoctorID %}'">Next</button></td>
+                    </tr>
+                {% endfor %}
+            </table> <br>
+        </div>
+    {% else %}
+        <div class="container">
+
+            <table >
+                <tr>
+                    <th>Doctor Profile</th>
+                    <th>Doctor Name</th>
+                    <th>Doctor Specialization</th>
+                    <th></th>
+                </tr>
+                {% for x in data %}
+                    <tr>
+                        <td><img src="{{ x.DoctorImg.url }}" alt="{{x.DoctorName}}" class="dimg"></td>
+                        <td>{{x.DoctorName}}</td>
+                        <td>{{x.Department}}</td>
+                        <td><button type="submit" class="search-btn" onclick="location.href='{% url 'appointment_view' DoctorID=x.DoctorID %}'"  >Next</button></td>
+                    </tr>
+                {% endfor %}
+            </table> <br>
+        </div>
+    {% endif %}
+        </div>
+        <p class="radio-btn action2-back"><a href="{% url 'search_view' %}" class="back-btn">Back</a>
+    </div>
+    <footer class="footer-section">
+        <div class="addr-section addr-footer">
+
+            <div class="addr footer-color footer-addr">
+                <address>201 E. FRONT STREET MISSOULA, MT 59802</address>
+            </div>
+
+            <div class="phnumber footer-color">Contact Us: 09456829202</div>
+            <hr class="line" />
+
+            <div class="copyrigt-section">
+                <p class="copyright footer-color">©2024 Hospital Appointment</p>
+            </div>
+        </div>
+        <p class="copyright-photo footer-color">
+            PHOTOGRAPHY BY:<span class="photo-name"> Unsplash</span>
+        </p>
+    </footer>
+</body>
+
+</html>

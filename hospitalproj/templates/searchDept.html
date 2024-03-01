@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{%static 'css/home.css'%}" />
+
+
+    <title>Appointment | Stage 2</title>
+    <style>
+        .depart-btn {
+  border: 0;
+  background-color: #574b90;
+  color: #fafafa;
+  padding: 0.8rem 0.5rem;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.depart-list {
+  width: 30rem;
+  margin: 2rem auto;
+}
+        .dimg{
+            width:5rem;
+            border-radius:50%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="appoint-section">
+        <p class="header">
+            Make Appointment
+        </p>
+        <p class="action-section">
+            <ul class="action-list">
+                <li class="actions"><a class="action ">1</a></li>
+                <li class="actions"><a class="action active-action">2</a></li>
+                <li class="actions"><a class="action">3</a></li>
+                <li class="actions"><a class="action">4</a></li>
+            </ul>
+        </p>
+        <p class="depart">
+        <p>
+             <table class="table depart-list">
+                     <tr>
+                    <th>Doctor Profile</th>
+                    <th>Doctor Name</th>
+                    <th>Doctor Specialization</th>
+                    <th></th>
+                </tr>
+                {% for x in data %}
+                    <tr>
+                        <td><img src="{{ x.DoctorImg.url }}" alt="{{x.DoctorName}}" class="dimg"></td>
+                        <td>{{ x.DoctorName }}</td>
+                        <td>{{ x.Department }}</td>
+                        <td><button type="submit" class="search-btn" onclick="location.href='{% url 'appointment_view' DoctorID=x.DoctorID %}'">Next</button></td>
+                    </tr>
+                {% endfor %}
+
+                </table>
+        </p>
+        </p>
+        <p class="radio-btn action2-back"><a href="{% url 'search_view' %}" class="back-btn">Back</a></p>
+    </div>
+
+</body>
+
+</html>

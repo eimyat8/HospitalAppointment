@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static '/css/home.css'%}" />
+
+
+    <title>Apppintment | Stage 2</title>
+    <style>
+        .dimg{
+            width:5rem;
+            border-radius:50%;
+        }
+        .result-txt{
+        text-align:center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="appoint-section">
+        <p class="header">
+            Make Appointment
+        </p>
+        <p class="action-section">
+        <ul class="action-list">
+            <li class="actions"><a class="action ">1</a></li>
+            <li class="actions"><a class="action active-action">2</a></li>
+            <li class="actions"><a class="action">3</a></li>
+            <li class="actions"><a class="action">4</a></li>
+        </ul>
+        </p>
+        <form method="post" class="search-form">
+            {% csrf_token %}
+            <p class="name-search">
+                <input type="text" class="search-name" name="docname" placeholder="Search Doctor Name">
+                <button type="submit" value="submit" class="search-btn">Search</button>
+            </p>
+
+        </form>
+        <p class="result-txt">{{message}}</p>
+        <p class="radio-btn action2-back"><a href="{% url 'search_view' %}" class="back-btn">Back</a>
+    </div>
+    <footer class="footer-section">
+        <div class="addr-section addr-footer">
+
+            <div class="addr footer-color footer-addr">
+                <address>201 E. FRONT STREET MISSOULA, MT 59802</address>
+            </div>
+
+            <div class="phnumber footer-color">Contact Us: 09456829202</div>
+            <hr class="line" />
+
+            <div class="copyrigt-section">
+                <p class="copyright footer-color">©2024 Hospital Appointment</p>
+            </div>
+        </div>
+        <p class="copyright-photo footer-color">
+            PHOTOGRAPHY BY:<span class="photo-name"> Unsplash</span>
+        </p>
+    </footer>
+</body>
+
+</html>

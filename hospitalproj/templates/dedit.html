@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static '/css/edit.css'%}">
+
+    <title>Doctor | Edit Profile</title>
+    <style>
+    .error-1{
+            color: red;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-left: 1rem;
+            margin-bottom: 1rem;
+}
+        select{
+        width: 20rem;
+  height: 1.9rem;
+  border-radius: 0.4rem;
+  border: 1px solid #574b90;
+  background-color: transparent;
+  &:focus {
+    outline: 1px solid #574b90;
+  }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="edit-form-section">
+        <h3 class="edit-header">Profile Edit</h3>
+
+        <form method="post" enctype="multipart/form-data" class="cta-section-1">
+
+        {%csrf_token%}
+        {% for field in form %}
+
+        <p class="input-section-1">{{ field.label_tag }} {{ field }}</p>
+        {% endfor %}
+           <div class="error-section">
+                {% if msg%}
+            <p class="error-1">{{msg}}</p>
+            {%endif%}
+           </div>
+
+        <div class="btn-section">
+             <button  class="primary-btn">Save</button>
+            <a href="{%url 'dprofile'%}" class="cancel-btn">Cancel</a>
+        </div>
+
+
+    </form>
+    </div>
+
+</body>
+
+</html>
