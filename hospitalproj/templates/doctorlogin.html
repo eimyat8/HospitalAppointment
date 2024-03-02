@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Staff Login</title>
     <link rel="stylesheet" href="{% static '/css/general.css'%}" />
     <link rel="stylesheet" href="{% static '/css/login.css'%}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -40,11 +40,19 @@
             right:7.85rem;
 
         }
+        .arrow-img {
+             width: 3rem;
+              transform: scale(-1);
+              position:relative;
+              top:2rem;
+              left:18rem;
+}
     </style>
 </head>
 
 <body>
     <div class="cta-content">
+        <a href="/"><img src="{%static '/img/arrow.png'%}" class="arrow-img"></a>
         <div class="login-section">
             <h3 class="login-header">Log in</h3>
            {% if messages %}
