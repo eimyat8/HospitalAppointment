@@ -124,6 +124,7 @@ h3 {
   width: 10rem;
   height: 10rem;
   border-radius: 50%;
+  box-shadow: 2px 3px 11px -3px rgba(64, 64, 64, 1);
 }
 .member-role {
   font-size: 1.4rem;
@@ -547,6 +548,7 @@ td {
   border-radius: 50%;
   margin-left: 3rem;
   margin-bottom: 3rem;
+  box-shadow: 2px 3px 11px -3px rgba(64, 64, 64, 1);
 }
 .feature-list {
   margin-right: 2rem;
